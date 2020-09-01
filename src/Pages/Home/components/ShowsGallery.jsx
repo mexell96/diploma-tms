@@ -9,7 +9,7 @@ function ShowsGallery(props) {
     {props.shows ? 
     props.shows.map(show=><Grid item lg={3} md={4} sm={6} xs={12}>
     <ShowCard 
-      src={show.image.medium} 
+      src={show.image ? show.image.medium : "" } 
       id={show.id} 
       key={show.id}/>
     </Grid>) : 

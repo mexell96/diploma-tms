@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import background from "./images/background.jpg";
 
-import { Home, About, JoinUs, Contacts, MovieReviews } from "./Pages";
+import { Home, About, JoinUs, Contacts, MovieReviews, Show } from "./Pages";
 import Header from "./components/Header";
 
 const useStyles = makeStyles({
@@ -39,6 +39,7 @@ function App() {
               key={elem.name}
             />
           ))}
+          <Route path={"/show/:id"} exact component={Show}></Route>
 
           <Route> 404 not found </Route>
         </Switch>
