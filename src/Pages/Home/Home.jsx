@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getShows } from "../../actions/shows";
+import ShowsGallery from "./components/ShowsGallery"
 
 function Home(props) {
   useEffect(() => {
     props.getShows(1);
-  }, []);
+  }, [props]);
 
-  return <div>Home</div>;
+  return <div>Home <ShowsGallery /></div>;
 }
 
 const mapStateToProps = (state) => ({});

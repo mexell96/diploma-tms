@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 });
 
 const routes = [
-  { path: "/", name: Home.name, component: Home },
+  { path: "/", name: "Home", component: Home },
   { path: "/about", name: About.name, component: About },
   { path: "/join-us", name: JoinUs.name, component: JoinUs },
   { path: "/contacts", name: Contacts.name, component: Contacts },
