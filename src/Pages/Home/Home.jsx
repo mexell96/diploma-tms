@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { getShows } from "../../actions/shows";
 import ShowsGallery from "./components/ShowsGallery";
 import { makeStyles } from "@material-ui/styles";
-import { Button } from "@material-ui/core";
-import { arrayFromNumber } from "./utils/index";
+// import { Button } from "@material-ui/core";
+// import { arrayFromNumber } from "./utils/index";
 
 const useStyles = makeStyles({
   root: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-const pages = 12;
+// const pages = 12;
 
 function Home(props) {
   const classes = useStyles();
@@ -22,20 +22,20 @@ function Home(props) {
     props.getShows(1);
   }, [props]);
 
-  const handlePageChange = (page) => (e) => {
-    props.getShows(page);
-  };
+  // const handlePageChange = (page) => (e) => {
+  //   props.getShows(page);
+  // };
 
   return (
     <div className={classes.root}>
       <ShowsGallery />
-      <div>
+      {/* <div>
         {arrayFromNumber(pages)
           .map((page) => page + 1)
           .map((number) => (
             <Button onClick={handlePageChange(number)}>{number}</Button>
           ))}
-      </div>
+      </div> */}
     </div>
   );
 }
