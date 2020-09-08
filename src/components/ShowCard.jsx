@@ -19,8 +19,8 @@ const useStyles = makeStyles((theme) => ({
       return styles;
     }
     if (size === "lg") {
-      styles.width = 825;
-      styles.height = 491;
+      styles.width = 455;
+      styles.height = 295;
       return styles;
     }
   },
