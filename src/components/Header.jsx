@@ -43,6 +43,11 @@ const useStyles = makeStyles({
     borderRadius: "5px",
     textDecoration: "none",
     background: "white",
+
+    "&:hover": {
+      padding: "10px 15px 7px 15px",
+      borderBottom: "3px solid pink",
+    }
   },
   navName: {
     margin: "0px 20px",

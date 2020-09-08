@@ -43,6 +43,11 @@ const useStyles = makeStyles({
     lineHeight: "normal",
     height: 15,
     margin: "22px 0px 0px 10px",
+    cursor: "pointer",
+
+    "&:hover": {
+      color: "#84878d",
+    }
   },
   divFlex: {
     display: "flex",

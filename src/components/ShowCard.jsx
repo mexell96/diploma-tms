@@ -10,6 +10,10 @@ const useStyles = makeStyles((theme) => ({
       height: 295,
       marginBottom: 10,
       overflow: "hidden",
+      border: "2px solid yellow",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",  
     };
     if (size === "sm") {
       return styles;
@@ -21,7 +25,9 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   image: {
-    transition: ".3s ease transform",
+    
+    transition: ".5s",
+    display: "block",
     "&:hover": {
       transform: "scale(1.2)",
     },
@@ -29,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ShowCard(props) {
-  const { size = "sm"} = props;
+  const { size = "sm" } = props;
   const { src, alt, id, title, description } = props;
   const classes = useStyles({ size });
 
