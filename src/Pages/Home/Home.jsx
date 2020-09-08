@@ -13,6 +13,10 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+    background: "red",
+    width: 1110,
+    margin: "0 auto",
+    padding: 30,
   },
 });
 

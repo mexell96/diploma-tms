@@ -29,7 +29,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ShowCard(props) {
-  const { size = "sm", src, alt, id, title, description } = props;
+  const { size = "sm"} = props;
+  const { src, alt, id, title, description } = props;
   const classes = useStyles({ size });
 
   return (
