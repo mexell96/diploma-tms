@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 const useStyles = makeStyles({
   nav: {
     flexDirection: "row",
+    background: "yellow",
   },
 })
 
