@@ -5,11 +5,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const useStyles = makeStyles((theme) => ({
     large: {
-        width: theme.spacing(39),
-        height: theme.spacing(39),
+        width: theme.spacing(30),
+        height: theme.spacing(30),
+        margin: "0 15px 0 15px",
     },
     flex: {
-        display: "flex"
+        display: "flex",
+        textAlign: "center",
+    },
+    flexNew: {
+        display: "flex",
+        padding: "0 0 0 100px",
+    },
+    avatarCenter: {
+        margin: "0 auto",
+        textAlign: "center",
     }
 }));
 
@@ -19,13 +29,13 @@ function TeamMember({ person }) {
     const soialForMap = Object.entries(social);
 
     return (
-        <div>
+        <div className={classes.avatarCenter} >
             <Avatar alt={person.name} src={person.avatar} className={classes.large} />
             <h3>{person.name}</h3>
             <span>{person.role}</span>
-            <ul className={classes.flex}>
+            <ul className={classes.flexNew}>
                 {soialForMap.map(([name, link]) => <li className={classes.flex}>
-                    <a target="_blank" rel="noopener noreferrer" href={link}><FontAwesomeIcon color="green" icon={["fab", name]} key={name} /></a>
+                    <a target="_blank" rel="noopener noreferrer" href={link}><FontAwesomeIcon color="rgb(132, 135, 141)" icon={["fab", name]} key={name} /></a>
                 </li>)}
             </ul>
         </div>

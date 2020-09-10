@@ -12,7 +12,7 @@ const useStyles = makeStyles({
   },
   nav: {
     flexDirection: "row",
-    background: "yellow",
+    background: "inherit",
     padding: "50px 0px",
     color: "#84878d",
     fontFamily: "Roboto, Open Sans, sansSerif",
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     lineHeight: "normal",
   },
   navLogo: {
-    background: "brown",
+    background: "inherit",
     padding: "20px 0px",
     textTransform: "uppercase",
     color: "white",

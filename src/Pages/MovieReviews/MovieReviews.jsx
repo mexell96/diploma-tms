@@ -3,6 +3,7 @@ import { getShows } from "../../actions/shows";
 import { useDispatch, useSelector } from "react-redux";
 import ShowsGallery from "../../components/ShowsGallery";
 import { Pagination } from '@material-ui/lab';
+import background from "../../images/background.jpg";
 
 function MovieReviews() {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ function MovieReviews() {
     setFrom((page - 1) * showsPerPage);
   }
 
-  return <div>Movie Reviews
+  return <div style={{backgroundImage: `url(${background})`,}}>Movie Reviews
     <ShowsGallery isReviewsPage showsPerPage={showsPerPage} from={from} />
     <Pagination count={count} variant="outlined" onChange={handleChange} shape="rounded" />
   </div>;

@@ -1,6 +1,8 @@
 import React from 'react'
 import { Grid } from '@material-ui/core'
 import FooterPage from "./components/FooterPage";
+import { makeStyles } from "@material-ui/core/styles";
+import background from "../../images/background.jpg";
 
 const footerData = [
     {
@@ -96,15 +98,42 @@ const footerData = [
     }
 ];
 
+const useStyles = makeStyles({
+    footer: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        backgroundImage: `url(${background})`,
+        width: 1170,
+        margin: "0 auto",
+        padding: "0px 366px 0px 366px",
+        color: "#84878d",
+        fontFamily: "Roboto, Open Sans, sans-serif",
+        fontSize: "15px",
+        fontWeight: 400,
+        lineHeight: "normal",
+    },
+    footerTitle: {
+        color: "#bec1c8",
+        fontWeight: 300,
+        margin: "0 0 20px",
+        fontSize: "12.5px",
+        fontFamily: "Roboto, Open Sans, sans-serif",
+        lineHeight: "normal",
+    },
+});
+
 function Footer() {
+    const classes = useStyles();
+
     return (
-        <div>
-            <Grid container>
-                {footerData.map(elem => <Grid item md={2} sm={12}><FooterPage title={elem.title} info={elem.info} /></Grid>)}
+        <div className={classes.footer}>
+            <Grid container className={classes.footerTitle}>
+                {footerData.map(elem => <Grid item md={2} sm={12}><FooterPage  title={elem.title} info={elem.info} /></Grid>)}
             </Grid>
             <p>Copyright 2014 Company name, Designed by Themezy. All rights reserved</p>
         </div>
     )
 }
 
-export default Footer
+export default Footer;

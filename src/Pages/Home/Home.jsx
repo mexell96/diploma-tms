@@ -7,16 +7,17 @@ import { makeStyles } from "@material-ui/styles";
 // import { Button } from "@material-ui/core";
 // import { arrayFromNumber } from "./utils/index";
 import Premieres from "./components/Premieres";
+import background from "../../images/background.jpg";
 
 const useStyles = makeStyles({
   root: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    background: "red",
-    width: 1110,
+    backgroundImage: `url(${background})`,
+    width: 1170,
     margin: "0 auto",
-    padding: 30,
+    padding: "0px 366px 0px 366px",
   },
 });
 
@@ -34,7 +35,7 @@ function Home(props) {
   // };
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} >
       <ShowsGallery />
       {/* <div>
         {arrayFromNumber(pages)

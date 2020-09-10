@@ -7,7 +7,6 @@ const useStyles = makeStyles({
     width: 350,
   },
   premTitle: {
-    background: "yellow",
     fontSize: "2em",
     fontWeight: 300,
     margin: "0 0 20px",
@@ -16,7 +15,6 @@ const useStyles = makeStyles({
     lineHeight: "normal",
   },
   premParag: {
-    background: "pink",
     marginTop: 0,
     color: "#84878d",
     fontFamily: "Roboto, Open Sans, sans-serif",
@@ -26,7 +24,7 @@ const useStyles = makeStyles({
     padding: "0px 15px 0px 0px",
   },
   premDate: {
-    background: "#593596",
+    background: "white",
     padding: "5px 10px",
     border: "1px solid black",
     borderRadius: 3,
