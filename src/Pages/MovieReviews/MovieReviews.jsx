@@ -3,7 +3,17 @@ import { getShows } from "../../actions/shows";
 import { useDispatch, useSelector } from "react-redux";
 import ShowsGallery from "../../components/ShowsGallery";
 import { Pagination } from '@material-ui/lab';
-import background from "../../images/background.jpg";
+import { makeStyles } from "@material-ui/core/styles";
+
+
+const useStyles = makeStyles({
+  pagin: {
+    display: "flex",
+    justifyContent: "center",
+    background: "pink",
+  },
+}); 
+
 
 function MovieReviews() {
   const dispatch = useDispatch();
@@ -25,9 +35,12 @@ function MovieReviews() {
     setFrom((page - 1) * showsPerPage);
   }
 
+  const classes = useStyles();
+
+
   return <div style={{background: "white"}}>Movie Reviews
     <ShowsGallery isReviewsPage showsPerPage={showsPerPage} from={from} />
-    <Pagination count={count} variant="outlined" onChange={handleChange} shape="rounded" />
+    <Pagination className={classes.pagin} count={count} variant="outlined" onChange={handleChange} shape="rounded" />
   </div>;
 }
 
