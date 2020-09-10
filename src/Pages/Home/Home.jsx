@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     backgroundImage: `url(${background})`,
     width: 1170,
     margin: "0 auto",
-    padding: "0px 366px 0px 366px",
+    padding: "0px 366.5px 0px 366.5px",
   },
 });
 

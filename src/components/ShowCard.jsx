@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
       height: 295,
       marginBottom: 10,
       overflow: "hidden",
-      border: "2px solid yellow",
+      border: "2px solid #84878d",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",  

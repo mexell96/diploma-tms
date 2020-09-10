@@ -25,7 +25,7 @@ function MovieReviews() {
     setFrom((page - 1) * showsPerPage);
   }
 
-  return <div style={{backgroundImage: `url(${background})`,}}>Movie Reviews
+  return <div style={{background: "white"}}>Movie Reviews
     <ShowsGallery isReviewsPage showsPerPage={showsPerPage} from={from} />
     <Pagination count={count} variant="outlined" onChange={handleChange} shape="rounded" />
   </div>;

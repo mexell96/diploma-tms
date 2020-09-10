@@ -49,7 +49,7 @@ const useStyles = makeStyles({
   },
   divFlex: {
     display: "flex",
-    borderBottom: "1px solid black",
+    borderBottom: "1px solid #84878d",
   },
 });
 
