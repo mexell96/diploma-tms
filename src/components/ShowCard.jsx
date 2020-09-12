@@ -19,8 +19,11 @@ const useStyles = makeStyles((theme) => ({
       return styles;
     }
     if (size === "lg") {
-      styles.width = 455;
-      styles.height = 295;
+      styles.width = 400;
+      styles.height =750;
+      styles.flexDirection = "column";
+      styles.justifyContent = "flex-start";
+      styles.background = "#bec1c8";
       return styles;
     }
   },
@@ -34,13 +37,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ShowCard(props) {
-  const { size = "sm", src, alt, id, title, description, isReviewsPage } = props;
+  const { size = "sm", src, alt, id, title, description, isReviewsPage, } = props;
   const classes = useStyles({ size, isReviewsPage });
 
   return (
     <div className={classes.showCard}>
       <Link to={`/show/${id}`}>
-        <img src={src} alt={alt ? alt : "no-alt"} className={classes.image} />
+        <img src={src} alt={alt ? alt : "no-alt"} className={classes.image}/>
       </Link>
       <h3>{title}</h3>
       <p>{description}</p>

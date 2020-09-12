@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import ShowCard from "./ShowCard";
 import { Grid } from "@material-ui/core";
 
-function ShowsGallery({ shows, showsPerPage = 7, isReviewsPage = false, from = 0 }) {
+function ShowsGallery({ shows, showsPerPage = 7, isReviewsPage = false, from = 0, cardSize }) {
   return (
     <Grid container>
       {shows
@@ -18,6 +18,7 @@ function ShowsGallery({ shows, showsPerPage = 7, isReviewsPage = false, from = 0
                 title={isReviewsPage ? show.name : undefined}
                 description={isReviewsPage && show.summary}
                 isReviewsPage={isReviewsPage}
+                size={cardSize}
               />
             </Grid>
           ))

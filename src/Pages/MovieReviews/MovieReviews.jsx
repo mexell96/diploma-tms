@@ -4,13 +4,21 @@ import { useDispatch, useSelector } from "react-redux";
 import ShowsGallery from "../../components/ShowsGallery";
 import { Pagination } from '@material-ui/lab';
 import { makeStyles } from "@material-ui/core/styles";
+import background from "../../images/background.jpg";
 
 
 const useStyles = makeStyles({
+  movieCenter: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: "0px 0px 0px 75px",
+    backgroundImage: `url(${background})`,
+  },
   pagin: {
     display: "flex",
     justifyContent: "center",
-    background: "pink",
+    background: "#bec1c8",
   },
 }); 
 
@@ -38,8 +46,8 @@ function MovieReviews() {
   const classes = useStyles();
 
 
-  return <div style={{background: "white"}}>Movie Reviews
-    <ShowsGallery isReviewsPage showsPerPage={showsPerPage} from={from} />
+  return <div className={classes.movieCenter}>Movie Reviews
+    <ShowsGallery isReviewsPage showsPerPage={showsPerPage} from={from} cardSize={"lg"}/>
     <Pagination className={classes.pagin} count={count} variant="outlined" onChange={handleChange} shape="rounded" />
   </div>;
 }

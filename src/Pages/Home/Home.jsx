@@ -35,8 +35,8 @@ function Home(props) {
   // };
 
   return (
-    <div className={classes.root} >
-      <ShowsGallery />
+    <div className={classes.root}>
+      <ShowsGallery cardSize={"sm"} />
       {/* <div>
         {arrayFromNumber(pages)
           .map((page) => page + 1)
