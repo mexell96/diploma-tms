@@ -1,7 +1,22 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+    ulStyle: {
+        paddingLeft: "15px",
+    },
+    liStyle: {
+        "&:hover": {
+            color: "#ffaa3c",
+        }
+    },
+});
+
 
 function InfoLinks({ info }) {
+    const classes = useStyles();
+
     const modifiedInfo = info.map(elem => {
         if (elem.link.startsWith("/")) {
             return {
@@ -17,8 +32,8 @@ function InfoLinks({ info }) {
     })
 
     return (
-        <ul>
-            {modifiedInfo.map((elem, id) => <li key={id}>{elem.inner ? <Link to={elem.link}>{elem.text}</Link> : <a target="_blank" rel="noopener noreferrer" href={`https://${elem.link}`}>{elem.text}</a>}</li>)}
+        <ul className={classes.ulStyle}>
+            {modifiedInfo.map((elem, id) => <li className={classes.liStyle} key={id}>{elem.inner ? <Link to={elem.link}>{elem.text}</Link> : <a target="_blank" rel="noopener noreferrer" href={`https://${elem.link}`}>{elem.text}</a>}</li>)}
         </ul>
     )
 }

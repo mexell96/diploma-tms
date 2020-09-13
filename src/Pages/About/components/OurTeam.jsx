@@ -3,8 +3,7 @@ import TeamMember from "./TeamMember";
 
 const data = [
   {
-    avatar:
-      "https://demo.themezy.com/system/resources/demo_themes/000/000/010//dummy/person-1.jpg",
+    avatar: "https://demo.themezy.com/system/resources/demo_themes/000/000/010//dummy/person-1.jpg",
     name: "Sarah Stuart",
     role: "Co-founder",
     social: [
@@ -18,8 +17,7 @@ const data = [
     id: "1",
   },
   {
-    avatar:
-      "https://demo.themezy.com/system/resources/demo_themes/000/000/010//dummy/person-2.jpg",
+    avatar: "https://demo.themezy.com/system/resources/demo_themes/000/000/010//dummy/person-2.jpg",
     name: "John Doe",
     role: "Managing Director",
     social: [
@@ -33,8 +31,7 @@ const data = [
     id: "2",
   },
   {
-    avatar:
-      "https://demo.themezy.com/system/resources/demo_themes/000/000/010//dummy/person-3.jpg",
+    avatar:"https://demo.themezy.com/system/resources/demo_themes/000/000/010//dummy/person-3.jpg",
     name: "Jessica Branson",
     role: "Reviewer",
     social: [
@@ -48,8 +45,7 @@ const data = [
     id: "3",
   },
   {
-    avatar:
-      "https://demo.themezy.com/system/resources/demo_themes/000/000/010//dummy/person-4.jpg",
+    avatar:"https://demo.themezy.com/system/resources/demo_themes/000/000/010//dummy/person-4.jpg",
     name: "Sarah Stuart",
     role: "Consultant",
     social: [
@@ -120,16 +116,16 @@ export class OurTeam extends Component {
                         <h2 style={{ fontSize: "2em", fontWeight: 300, margin: "0 0 20px", color: "#84878d", fontFamily: "Roboto, Open Sans, sans-serif", lineHeight: "normal",}}>
                         Useful Links
                         </h2>
-                       
+                      
 
-                       <a style={aStyle} href={url}>Eiusmod tempor incididunt</a>
-                       <a style={aStyle} href={url}>Tenim ad minim venia</a>
-                       <a style={aStyle} href={url}>Quis nostrud exercitation</a>
-                       <a style={aStyle} href={url}>Ullamco laboris reprehenderit</a>
-                       <a style={aStyle} href={url}>Duis aute dolor voluptat</a>
-                       <a style={aStyle} href={url}>Velit esse cillum dolore</a>
-                       <a style={aStyle} href={url}>Excepteur sint occaeca</a>
-                       
+                      <a style={aStyle} href={url}>Eiusmod tempor incididunt</a>
+                      <a style={aStyle} href={url}>Tenim ad minim venia</a>
+                      <a style={aStyle} href={url}>Quis nostrud exercitation</a>
+                      <a style={aStyle} href={url}>Ullamco laboris reprehenderit</a>
+                      <a style={aStyle} href={url}>Duis aute dolor voluptat</a>
+                      <a style={aStyle} href={url}>Velit esse cillum dolore</a>
+                      <a style={aStyle} href={url}>Excepteur sint occaeca</a>
+                      
                     </div>
                 </div>
 

@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
   showCard: ({ size }) => {
     const styles = {
       width: 255,
-      height: 295,
+      height: 358,
       marginBottom: 10,
       overflow: "hidden",
       border: "2px solid #84878d",
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   image: ({ isReviewsPage }) => ({
-    transition: isReviewsPage ? ".5s" : "none",
+    transition: isReviewsPage ? ".3s ease transform" : "none",
     display: "block",
     "&:hover": {
       transform: isReviewsPage ? "scale(1.2)" : "none",
@@ -43,7 +43,7 @@ function ShowCard(props) {
   return (
     <div className={classes.showCard}>
       <Link to={`/show/${id}`}>
-        <img src={src} alt={alt ? alt : "no-alt"} className={classes.image}/>
+        <img src={src} alt={alt ? alt : "no-alt"} className={classes.image} style={{width: "255px"}}/>
       </Link>
       <h3>{title}</h3>
       <p>{description}</p>

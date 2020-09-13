@@ -42,15 +42,18 @@ const useStyles = makeStyles({
     border: "1px solid black",
     borderRadius: "5px",
     textDecoration: "none",
-    background: "white",
+    background: "#ffaa3c",
+    color: "black",
 
     "&:hover": {
       padding: "10px 15px 7px 15px",
-      borderBottom: "3px solid pink",
+      borderBottom: "3px solid white",
+      background: "#ffa023",
     }
   },
   navName: {
     margin: "0px 20px",
+    color: "#FFA93C",
   }
 });
 
@@ -85,7 +88,7 @@ Header.propTypes = {
     PropTypes.shape({
       path: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      component: PropTypes.func,
+      component: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
     })
   ),
 };

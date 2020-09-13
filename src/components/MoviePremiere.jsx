@@ -23,10 +23,13 @@ const useStyles = makeStyles({
     lineHeight: "normal",
     padding: "0px 15px 0px 0px",
   },
+  divFlex: {
+    display: "flex",
+  },
   premDate: {
-    background: "white",
+    background: "#ffaa3c",
     padding: "5px 10px",
-    border: "1px solid black",
+    border: "1px solid #ffaa3c",
     borderRadius: 3,
     height: 15,
   },
@@ -42,14 +45,9 @@ const useStyles = makeStyles({
     height: 15,
     margin: "22px 0px 0px 10px",
     cursor: "pointer",
-
     "&:hover": {
       color: "#84878d",
     }
-  },
-  divFlex: {
-    display: "flex",
-    borderBottom: "1px solid #84878d",
   },
 });
 
@@ -78,14 +76,10 @@ function MoviePremiere(props) {
       <Typography variant="h2" component="h2" className={classes.premTitle}>
         {getMonthName(premiereMonth.getMonth())} premiere
       </Typography>
-      <Typography component="p" className={classes.premParag}>
-        {description}
-      </Typography>
+      <Typography component="p" className={classes.premParag}>{description}</Typography>
       {movies.map((movie) => (
         <div className={classes.divFlex}>
-          <p className={classes.premDate}>
-            {movie.date.getDate()}/{movie.date.getMonth()}
-          </p>
+          <p className={classes.premDate}>{movie.date.getDate()}/{movie.date.getMonth()}</p>
           <p className={classes.premName}>{movie.description}</p>
         </div>
       ))}
