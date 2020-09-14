@@ -30,7 +30,7 @@ const useStyles = makeStyles({
 }); 
 
 
-function MovieReviews() {
+function MovieReviewsGenre() {
   const dispatch = useDispatch();
   const [from, setFrom] = useState(0);
   const [count, setCount] = useState(10);
@@ -54,31 +54,12 @@ function MovieReviews() {
   useEffect(() => {
     if (shows) {
       if (selectedGenre !== ALL_GENRES) {
-        //
-        //debugger
-
-        const includesShows = show => {
-          var showGenre = show.genres; // полная имя жанра
-          console.log(showGenre, "полная имя жанра");
-          if (showGenre === null) {
-            console.log("пришел null");
-          } else {
-            var newShowName = showGenre; // ничего не делал
-            console.log(newShowName, "ничего не делал");  
-          }
-         
-          return showGenre.includes(selectedGenre, "подходящие шоу"); // вернули подходяие
-          
-        }
-
-        console.log(includesShows, "includesShows");
-        const filteredShows = shows.filter(includesShows);
-        console.log(filteredShows, "filteredShows");
-        //
+        const filteredShows = shows.filter(show => show.genres.includes(selectedGenre));
         dispatch(setSearchedShows(filteredShows))
       } else {
         dispatch(setSearchedShows(shows))
       }
+      
     }
   }, [dispatch, genres, selectedGenre, shows])
 
@@ -106,4 +87,4 @@ function MovieReviews() {
   </div>;
 }
 
-export default MovieReviews;
+export default MovieReviewsGenre;
