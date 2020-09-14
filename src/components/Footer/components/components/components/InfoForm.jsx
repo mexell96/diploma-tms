@@ -12,7 +12,7 @@ const useStyles = makeStyles({
         fontSize: "12.5px",
         fontFamily: "Roboto, Open Sans, sans-serif",
         "&:hover": {
-            border: "2px solid #ffaa3c",
+            border: "1px solid #ffaa3c",
         }
     },
 });

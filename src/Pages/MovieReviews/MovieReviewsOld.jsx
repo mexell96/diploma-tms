@@ -8,7 +8,7 @@ import { Select, MenuItem } from '@material-ui/core'
 import { makeStyles } from "@material-ui/core/styles";
 import background from "../../images/background.jpg";
 
-const ALL_YEARS = 'All'
+const ALL_GENRES = 'All'
 
 const useStyles = makeStyles({
   movieCenter: {
@@ -34,8 +34,8 @@ function MovieReviews() {
   const dispatch = useDispatch();
   const [from, setFrom] = useState(0);
   const [count, setCount] = useState(10);
-  const [premiered, setYears] = useState([]);
-  const [selectedYear, setSelectedYear] = useState(ALL_YEARS)
+  const [genres, setGenres] = useState([]);
+  const [selectedGenre, setSelectedGenre] = useState(ALL_GENRES)
   const { shows, searchedShows } = useSelector(state => state.show)
 
   const showsPerPage = 8;
@@ -44,21 +44,8 @@ function MovieReviews() {
 
   useEffect(() => {
     if (shows) {
-      // const yearsSet = new Set(shows.flatMap(show => show.premiered));
-      const oldYearSet = shows.flatMap(show => show.premiered);
-      var newArrDate = [];
-      for (let index = 0; index < oldYearSet.length; index++) {
-        if (oldYearSet[index] == null) {
-
-        } else {
-          let date = oldYearSet[index];
-          var newData = date.substring(0, 4);
-        }
-        newArrDate.push(newData);
-      }
-
-      const yearsSet = new Set(newArrDate);
-      setYears([...yearsSet.values()])
+      const genresSet = new Set(shows.flatMap(show => show.genres));
+      setGenres([...genresSet.values()])
       setCount(Math.ceil(shows.length / showsPerPage))
     }
 
@@ -66,31 +53,41 @@ function MovieReviews() {
 
   useEffect(() => {
     if (shows) {
-      if (selectedYear !== ALL_YEARS) {
-        
-        const includShows = show => {
-          if (show.premiered === null) {
-            console.log("у шоу нет даты");
+      if (selectedGenre !== ALL_GENRES) {
+        //
+        //debugger
+
+        const includesShows = show => {
+          var showGenre = show.genres; // полная имя жанра
+          console.log(showGenre, "полная имя жанра");
+          if (showGenre === null) {
+            console.log("пришел null");
           } else {
-            var newShowDate = show.premiered.substring(0, 4);
-            return newShowDate.includes(selectedYear, "подходящие даты"); // вернули подходяие
+            var newShowName = showGenre; // ничего не делал
+            console.log(newShowName, "ничего не делал");  
           }
+         
+          return showGenre.includes(selectedGenre, "подходящие шоу"); // вернули подходяие
+          
         }
-        
-        const filteredShows = shows.filter(includShows);  
+
+        console.log(includesShows, "includesShows");
+        const filteredShows = shows.filter(includesShows);
+        console.log(filteredShows, "filteredShows");
+        //
         dispatch(setSearchedShows(filteredShows))
       } else {
         dispatch(setSearchedShows(shows))
       }
     }
-  }, [dispatch, premiered, selectedYear, shows])
+  }, [dispatch, genres, selectedGenre, shows])
 
   const handleChange = (event, page) => {
     setFrom((page - 1) * showsPerPage);
   }
 
   const handleSelectChange = (event) => {
-    setSelectedYear(event.target.value)
+    setSelectedGenre(event.target.value)
   }
 
   const classes = useStyles();
@@ -98,10 +95,10 @@ function MovieReviews() {
 
   return <div className={classes.movieCenter}>
   
-    <Select value={selectedYear} onChange={handleSelectChange} className={classes.colorTilte}>
+    <Select value={selectedGenre} onChange={handleSelectChange} className={classes.colorTilte}>
       <MenuItem value="All" >All
       </MenuItem>
-      {premiered.map(year => <MenuItem key={year} value={year}>{year}</MenuItem>)}
+      {genres.map(genre => <MenuItem key={genre} value={genre}>{genre}</MenuItem>)}
     </Select>
 
     <ShowsGallery shows={searchedShows} isReviewsPage showsPerPage={showsPerPage} from={from}  cardSize={"lg"} />

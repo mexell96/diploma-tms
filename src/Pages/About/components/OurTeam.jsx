@@ -66,12 +66,9 @@ export class OurTeam extends Component {
         let url="";
         const aStyle = {
             color: "#84878d",
-            transition: ".3s ease",
             textDecoration: "none",
             fontFamily: "Roboto, Open Sans, sans-serif",
             fontSize: "15px",
-            fontWeight: "400",
-            lineHeight: "normal",
             margin: 5,
         };
 
@@ -116,7 +113,6 @@ export class OurTeam extends Component {
                         <h2 style={{ fontSize: "2em", fontWeight: 300, margin: "0 0 20px", color: "#84878d", fontFamily: "Roboto, Open Sans, sans-serif", lineHeight: "normal",}}>
                         Useful Links
                         </h2>
-                      
 
                       <a style={aStyle} href={url}>Eiusmod tempor incididunt</a>
                       <a style={aStyle} href={url}>Tenim ad minim venia</a>
