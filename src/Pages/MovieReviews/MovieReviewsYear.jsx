@@ -30,7 +30,7 @@ const useStyles = makeStyles({
 }); 
 
 
-function MovieReviews() {
+function MovieReviewsYear() {
   const dispatch = useDispatch();
   const [from, setFrom] = useState(0);
   const [count, setCount] = useState(10);
@@ -109,4 +109,5 @@ function MovieReviews() {
   </div>;
 }
 
-export default MovieReviews;
+export default MovieReviewsYear;
+

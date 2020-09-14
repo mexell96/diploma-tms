@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import background from "./images/background.jpg";
 
-import { Home, About, JoinUs, Contacts, MovieReviews, Show } from "./Pages";
+import { Home, About, JoinUs, Contacts, MovieReviewsYear, Show } from "./Pages";
 import Header from "./components/Header";
 import Footer from "./components/Footer/Footer";
 
@@ -25,7 +25,7 @@ const useStyles = makeStyles({
 const routes = [
   { path: "/", name: "Home", component: Home },
   { path: "/about", name: About.name, component: About },
-  { path: "/movie-reviews", name: MovieReviews.name, component: MovieReviews },
+  { path: "/movie-reviews", name: MovieReviewsYear.name, component: MovieReviewsYear },
   { path: "/join-us", name: JoinUs.name, component: JoinUs },
   { path: "/contacts", name: Contacts.name, component: Contacts },
 ];
