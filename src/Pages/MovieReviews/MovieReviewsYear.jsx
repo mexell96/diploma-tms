@@ -61,7 +61,7 @@ function MovieReviewsYear() {
       setYears([...yearsSet.values()])
       setCount(Math.ceil(shows.length / showsPerPage))
     }
-  }, [dispatch, shows])
+  }, [dispatch, shows]) // года
 
   useEffect(() => {
     if (shows) {
@@ -69,40 +69,55 @@ function MovieReviewsYear() {
       setGenres([...genresSet.values()])
       setCount(Math.ceil(shows.length / showsPerPage))
     }
-
-  }, [dispatch, shows])
-
+  }, [dispatch, shows]) //жанры
 
 
   useEffect(() => {
     if (shows) {
       if (selectedYear !== ALL_YEARS) {
-        
-        const includShows = show => {
+        const includShowsYear = show => {
           if (show.premiered) {
             var newShowDate = show.premiered.substring(0, 4);
-            return newShowDate.includes(selectedYear, "подходящие даты"); // вернули подходяие
+            return newShowDate.includes(selectedYear);
           }
         }
-        const filteredShows = shows.filter(includShows);  
-        dispatch(setSearchedShows(filteredShows))
+        console.log(includShowsYear)
+
+        const filteredShowsYear = shows.filter(includShowsYear); 
+        console.log(filteredShowsYear, "filteredShowsYear") 
+        dispatch(setSearchedShows(filteredShowsYear))
       } else {
         dispatch(setSearchedShows(shows))
       }
     }
-  }, [dispatch, premiered, selectedYear, shows])
+  }, [dispatch, premiered, selectedYear, shows]) // года
 
   useEffect(() => {
     if (shows) {
       if (selectedGenre !== ALL_GENRES) {
-        const filteredShows = shows.filter(show => show.genres.includes(selectedGenre));
+
+        const includShowsGenre = show => {
+          if (show.premiered) {
+            var newShowDate = show.premiered.substring(0, 4);
+            return newShowDate.includes(selectedYear);
+          }
+        }
+        console.log(includShowsGenre);
+        const filteredShowsGenre = (shows.filter(includShowsGenre));
+        console.log(filteredShowsGenre, "filteredShowsGenre")
+debugger
+        const newfilteredShowsGenre = (filteredShowsGenre.length > 0) ?  filteredShowsGenre : shows;
+debugger
+        const filteredShows = newfilteredShowsGenre.filter(show => show.genres.includes(selectedGenre));
+        console.log(filteredShows);
+
         dispatch(setSearchedShows(filteredShows))
       } else {
         dispatch(setSearchedShows(shows))
-      }
-      
+      } 
     }
-  }, [dispatch, genres, selectedGenre, shows])
+  }, [dispatch, genres, selectedGenre, shows]) //жанры
+
 
 
   const handleChange = (event, page) => {
@@ -123,13 +138,13 @@ function MovieReviewsYear() {
   return <div className={classes.movieCenter}>
   
     <Select value={selectedYear} onChange={handleSelectChange} className={classes.colorTilte}>
-      <MenuItem value="All" >All years
+      <MenuItem value="All" >1. Choose year
       </MenuItem>
       {premiered.map(year => <MenuItem key={year} value={year}>{year}</MenuItem>)}
     </Select>
 
     <Select value={selectedGenre} onChange={handleSelectChangeGenre} className={classes.colorTilte}>
-      <MenuItem value="All" >All genres
+      <MenuItem value="All" >2.Choose genre
       </MenuItem>
       {genres.map(genre => <MenuItem key={genre} value={genre}>{genre}</MenuItem>)}
     </Select>
