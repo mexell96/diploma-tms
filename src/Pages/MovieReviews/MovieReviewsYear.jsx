@@ -38,10 +38,8 @@ function MovieReviewsYear() {
   const [count, setCount] = useState(10);
   const [premiered, setYears] = useState([]);
   const [selectedYear, setSelectedYear] = useState(ALL_YEARS)
-
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState(ALL_GENRES)
-
   const { shows, searchedShows } = useSelector(state => state.show)
 
   const showsPerPage = 8;
@@ -53,12 +51,10 @@ function MovieReviewsYear() {
       const oldYearSet = shows.flatMap(show => show.premiered);
       var newArrDate = [];
       for (let index = 0; index < oldYearSet.length; index++) {
-        if (oldYearSet[index] == null) {
-
-        } else {
+        if (oldYearSet[index]) {
           let date = oldYearSet[index];
           var newData = date.substring(0, 4);
-        }
+        } 
         newArrDate.push(newData);
       }
       const yearsSet = new Set(newArrDate);
