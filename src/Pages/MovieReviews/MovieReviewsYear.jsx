@@ -95,7 +95,6 @@ function MovieReviewsYear() {
   useEffect(() => {
     if (shows) {
       if (selectedGenre !== ALL_GENRES) {
-
         const includShowsGenre = show => {
           if (show.premiered) {
             var newShowDate = show.premiered.substring(0, 4);
@@ -103,11 +102,12 @@ function MovieReviewsYear() {
           }
         }
         console.log(includShowsGenre);
+        
         const filteredShowsGenre = (shows.filter(includShowsGenre));
         console.log(filteredShowsGenre, "filteredShowsGenre")
-debugger
+
         const newfilteredShowsGenre = (filteredShowsGenre.length > 0) ?  filteredShowsGenre : shows;
-debugger
+
         const filteredShows = newfilteredShowsGenre.filter(show => show.genres.includes(selectedGenre));
         console.log(filteredShows);
 
