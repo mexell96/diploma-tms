@@ -69,14 +69,11 @@ function MovieReviewsYear() {
       if (selectedYear !== ALL_YEARS) {
         
         const includShows = show => {
-          if (show.premiered === null) {
-            console.log("у шоу нет даты");
-          } else {
+          if (show.premiered) {
             var newShowDate = show.premiered.substring(0, 4);
             return newShowDate.includes(selectedYear, "подходящие даты"); // вернули подходяие
           }
         }
-        
         const filteredShows = shows.filter(includShows);  
         dispatch(setSearchedShows(filteredShows))
       } else {
