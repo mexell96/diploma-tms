@@ -9,6 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import background from "../../images/background.jpg";
 
 const ALL_YEARS = 'All'
+const ALL_GENRES = 'All'
 
 const useStyles = makeStyles({
   movieCenter: {
@@ -24,8 +25,9 @@ const useStyles = makeStyles({
     background: "#bec1c8",
   },
   colorTilte: {
-    padding: "10px 50px 10px 50px",
+    padding: "5px 5px 5px 5px",
     background: "#ffaa3c",
+    width: 250,
   },
 }); 
 
@@ -36,6 +38,10 @@ function MovieReviewsYear() {
   const [count, setCount] = useState(10);
   const [premiered, setYears] = useState([]);
   const [selectedYear, setSelectedYear] = useState(ALL_YEARS)
+
+  const [genres, setGenres] = useState([]);
+  const [selectedGenre, setSelectedGenre] = useState(ALL_GENRES)
+
   const { shows, searchedShows } = useSelector(state => state.show)
 
   const showsPerPage = 8;
@@ -44,7 +50,6 @@ function MovieReviewsYear() {
 
   useEffect(() => {
     if (shows) {
-      // const yearsSet = new Set(shows.flatMap(show => show.premiered));
       const oldYearSet = shows.flatMap(show => show.premiered);
       var newArrDate = [];
       for (let index = 0; index < oldYearSet.length; index++) {
@@ -56,13 +61,22 @@ function MovieReviewsYear() {
         }
         newArrDate.push(newData);
       }
-
       const yearsSet = new Set(newArrDate);
       setYears([...yearsSet.values()])
       setCount(Math.ceil(shows.length / showsPerPage))
     }
+  }, [dispatch, shows])
+
+  useEffect(() => {
+    if (shows) {
+      const genresSet = new Set(shows.flatMap(show => show.genres));
+      setGenres([...genresSet.values()])
+      setCount(Math.ceil(shows.length / showsPerPage))
+    }
 
   }, [dispatch, shows])
+
+
 
   useEffect(() => {
     if (shows) {
@@ -82,6 +96,19 @@ function MovieReviewsYear() {
     }
   }, [dispatch, premiered, selectedYear, shows])
 
+  useEffect(() => {
+    if (shows) {
+      if (selectedGenre !== ALL_GENRES) {
+        const filteredShows = shows.filter(show => show.genres.includes(selectedGenre));
+        dispatch(setSearchedShows(filteredShows))
+      } else {
+        dispatch(setSearchedShows(shows))
+      }
+      
+    }
+  }, [dispatch, genres, selectedGenre, shows])
+
+
   const handleChange = (event, page) => {
     setFrom((page - 1) * showsPerPage);
   }
@@ -90,15 +117,25 @@ function MovieReviewsYear() {
     setSelectedYear(event.target.value)
   }
 
+  const handleSelectChangeGenre = (event) => {
+    setSelectedGenre(event.target.value)
+  }
+
   const classes = useStyles();
 
 
   return <div className={classes.movieCenter}>
   
     <Select value={selectedYear} onChange={handleSelectChange} className={classes.colorTilte}>
-      <MenuItem value="All" >All
+      <MenuItem value="All" >All years
       </MenuItem>
       {premiered.map(year => <MenuItem key={year} value={year}>{year}</MenuItem>)}
+    </Select>
+
+    <Select value={selectedGenre} onChange={handleSelectChangeGenre} className={classes.colorTilte}>
+      <MenuItem value="All" >All genres
+      </MenuItem>
+      {genres.map(genre => <MenuItem key={genre} value={genre}>{genre}</MenuItem>)}
     </Select>
 
     <ShowsGallery shows={searchedShows} isReviewsPage showsPerPage={showsPerPage} from={from}  cardSize={"lg"} />
