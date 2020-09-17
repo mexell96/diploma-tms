@@ -58,16 +58,19 @@ function MovieReviewsYear() {
         } 
         newArrDate.push(newData);
       }
-      const yearsSet = new Set(newArrDate);
-      setYears([...yearsSet.values()])
+      const yearsSetSort = new Set(newArrDate.sort(function(a,b) { 
+        return b - a})
+      );
+      setYears([...yearsSetSort.values()])
       setCount(Math.ceil(shows.length / showsPerPage))
     }
   }, [dispatch, shows]) // делает список годов
 
   useEffect(() => {
     if (shows) {
-      const genresSet = new Set(shows.flatMap(show => show.genres));
-      setGenres([...genresSet.values()])
+      const genresSet = shows.flatMap(show => show.genres);
+      const genresSetSort = new Set(genresSet.sort());
+      setGenres([...genresSetSort.values()])
       setCount(Math.ceil(shows.length / showsPerPage))
     }
   }, [dispatch, shows]) // делает список жанров
