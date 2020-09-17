@@ -10,6 +10,7 @@ import background from "../../images/background.jpg";
 
 const ALL_YEARS = 'All'
 const ALL_GENRES = 'All'
+var _ = require('lodash');
 
 const useStyles = makeStyles({
   movieCenter: {
@@ -38,8 +39,8 @@ function MovieReviewsYear() {
   const [count, setCount] = useState(10);
   const [premiered, setYears] = useState([]);
   const [selectedYear, setSelectedYear] = useState(ALL_YEARS)
-  const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState(ALL_GENRES)
+  const [genres, setGenres] = useState([]);
   const { shows, searchedShows } = useSelector(state => state.show)
 
   const showsPerPage = 8;
@@ -74,51 +75,37 @@ function MovieReviewsYear() {
 
   useEffect(() => {
     if (shows) {
-      if (selectedYear !== ALL_YEARS) {
+      if (selectedYear !== ALL_YEARS || selectedGenre !== ALL_GENRES) {
         const filteredShowsYear = shows.filter(show => {
           if (show.premiered) {
-            var newShowDate = show.premiered.substring(0, 4);
+            const newShowDate = show.premiered.substring(0, 4);
             return newShowDate.includes(selectedYear);
           }
         }); 
-        console.log(filteredShowsYear, "Отфильтрованные шоу по году");
+        
+        const filteredShowsGenre = shows.filter(show => {
+          return show.genres.includes(selectedGenre);
+        });
+      
+        let filteredShows = [];
 
-        let filteredShowsGenre = [];
-        if (selectedGenre !== "All") {
-          filteredShowsGenre = filteredShowsYear.filter(show => {
-            return show.genres.includes(selectedGenre);
-          });
-        } else {
-          filteredShowsGenre = filteredShowsYear;
-        }
-
-        console.log(filteredShowsGenre, "Отфильтрованные шоу по году и жанру")
-
-
-        dispatch(setSearchedShows(filteredShowsGenre))
+        if (selectedYear !== "All" && selectedGenre === "All") {
+          filteredShows = filteredShowsYear;
+        };
+        if (selectedYear === "All" && selectedGenre !== "All") {
+          filteredShows = filteredShowsGenre;
+        };
+        if (selectedYear !== "All" && selectedGenre !== "All") {
+          filteredShows = _.intersection(filteredShowsYear, filteredShowsGenre);
+        };
+        
+        console.log(filteredShows, "Отфильтрованные шоу")
+        dispatch(setSearchedShows(filteredShows))
       } else {
         dispatch(setSearchedShows(shows))
       }
     }
   }, [dispatch, premiered, selectedYear, selectedGenre, shows])
-
-
-  useEffect(() => {
-    if (shows) {
-      if (selectedGenre !== ALL_GENRES) {
-        const filteredShowsGenre = shows.filter(show => {
-          return show.genres.includes(selectedGenre);
-        });
-
-        console.log(filteredShowsGenre, "Отфильтрованные шоу по жанру");
-
-        dispatch(setSearchedShows(filteredShowsGenre))
-      } else {
-        dispatch(setSearchedShows(shows))
-      } 
-    }
-  }, [dispatch, premiered, selectedGenre, shows])
-
 
   const handleChange = (event, page) => {
     setFrom((page - 1) * showsPerPage);
