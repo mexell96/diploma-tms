@@ -35,7 +35,7 @@ const useStyles = makeStyles({
 function MovieReviews() {
   const dispatch = useDispatch();
   const [from, setFrom] = useState(0);
-  const [count, setCount] = useState(10);
+  const [count, setCount] = useState(0);
   const [premiered, setYears] = useState([]);
   const [selectedYear, setSelectedYear] = useState(ALL_YEARS);
   const [selectedGenre, setSelectedGenre] = useState(ALL_GENRES);
@@ -81,7 +81,7 @@ function MovieReviews() {
       var newShows = searchedShows === null ? shows : searchedShows;
       setCount(Math.ceil(newShows.length / showsPerPage));
     }
-  }, [dispatch, shows, searchedShows]); // количество страниц
+  }, [dispatch, searchedShows]); // количество страниц
 
   useEffect(() => {
     if (shows) {
