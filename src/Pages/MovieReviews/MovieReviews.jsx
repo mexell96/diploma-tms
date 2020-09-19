@@ -89,7 +89,7 @@ function MovieReviews() {
         let filteredShows;
         let newShows;
 
-        if (selectedYear !== "All" && selectedGenre === "All") {
+        if (selectedYear !== ALL_YEARS && selectedGenre === ALL_GENRES) {
           newShows = shows;
           const filteredShowsYear = newShows.filter((show) => {
             if (show.premiered) {
@@ -100,7 +100,7 @@ function MovieReviews() {
           filteredShows = filteredShowsYear;
         }
 
-        if (selectedYear === "All" && selectedGenre !== "All") {
+        if (selectedYear === ALL_YEARS && selectedGenre !== ALL_GENRES) {
           newShows = shows;
           const filteredShowsGenre = newShows.filter((show) => {
             return show.genres.includes(selectedGenre);
@@ -108,7 +108,7 @@ function MovieReviews() {
           filteredShows = filteredShowsGenre;
         }
 
-        if (selectedYear !== "All" && selectedGenre !== "All") {
+        if (selectedYear !== ALL_YEARS && selectedGenre !== ALL_GENRES) {
           newShows =
             searchedShows.length < shows.length && searchedShows.length !== 0
               ? searchedShows
