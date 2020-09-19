@@ -109,10 +109,7 @@ function MovieReviews() {
         }
 
         if (selectedYear !== ALL_YEARS && selectedGenre !== ALL_GENRES) {
-          newShows =
-            searchedShows.length < shows.length && searchedShows.length !== 0
-              ? searchedShows
-              : shows;
+          newShows = searchedShows.length < shows.length && searchedShows.length !== 0 ? searchedShows : shows;
           const filteredShowsYear = newShows.filter((show) => {
             if (show.premiered) {
               const newShowDate = show.premiered.substring(0, 4);
