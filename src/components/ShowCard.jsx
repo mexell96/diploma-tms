@@ -5,26 +5,26 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   showCard: ({ size }) => {
-    const styles = {
-      width: 255,
-      height: 358,
-      marginBottom: 10,
+    const stylesSM = {
       overflow: "hidden",
-      border: "2px solid #84878d",
-      display: "flex",
       justifyContent: "center",
       alignItems: "center",  
     };
+    const stylesLG = {
+      width: 400,
+      height: 750,
+      marginBottom: 20,
+      background: "#bec1c8",
+      display: "flex",
+      flexDirection:"column",
+      alignItems: "center",  
+    }
     if (size === "sm") {
-      return styles;
+      return stylesSM;
     }
     if (size === "lg") {
-      styles.width = 400;
-      styles.height =750;
-      styles.flexDirection = "column";
-      styles.justifyContent = "flex-start";
-      styles.background = "#bec1c8";
-      return styles;
+      
+      return stylesLG;
     }
   },
   image: ({ isReviewsPage }) => ({
@@ -43,7 +43,7 @@ function ShowCard(props) {
   return (
     <div className={classes.showCard}>
       <Link to={`/show/${id}`}>
-        <img src={src} alt={alt ? alt : "no-alt"} className={classes.image} style={{width: "255px"}}/>
+        <img src={src} alt={alt ? alt : "no-alt"} className={classes.image} style={{width: "255px", margin: "0 auto",}}/>
       </Link>
       <h3>{title}</h3>
       <p>{description}</p>

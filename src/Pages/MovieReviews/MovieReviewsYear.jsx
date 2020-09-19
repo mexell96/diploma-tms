@@ -79,30 +79,43 @@ function MovieReviewsYear() {
   useEffect(() => {
     if (shows) {
       if (selectedYear !== ALL_YEARS || selectedGenre !== ALL_GENRES) {
-        const filteredShowsYear = shows.filter(show => {
-          if (show.premiered) {
-            const newShowDate = show.premiered.substring(0, 4);
-            return newShowDate.includes(selectedYear);
-          }
-        }); 
-        
-        const filteredShowsGenre = shows.filter(show => {
-          return show.genres.includes(selectedGenre);
-        });
-      
-        let filteredShows = [];
+        let filteredShows;
+        let newShows;
 
         if (selectedYear !== "All" && selectedGenre === "All") {
+          newShows = shows;
+          const filteredShowsYear = newShows.filter(show => {
+            if (show.premiered) {
+              const newShowDate = show.premiered.substring(0, 4);
+              return newShowDate.includes(selectedYear);
+            }
+          }); 
           filteredShows = filteredShowsYear;
         };
+
         if (selectedYear === "All" && selectedGenre !== "All") {
+          newShows = shows;
+          const filteredShowsGenre = newShows.filter(show => {
+            return show.genres.includes(selectedGenre);
+          });
           filteredShows = filteredShowsGenre;
         };
+
         if (selectedYear !== "All" && selectedGenre !== "All") {
+          newShows = (searchedShows.length < shows.length && searchedShows.length !== 0) ? searchedShows : shows;
+          const filteredShowsYear = newShows.filter(show => {
+            if (show.premiered) {
+              const newShowDate = show.premiered.substring(0, 4);
+              return newShowDate.includes(selectedYear);
+            }
+          }); 
+          const filteredShowsGenre = newShows.filter(show => {
+            return show.genres.includes(selectedGenre);
+          });
           filteredShows = _.intersection(filteredShowsYear, filteredShowsGenre);
         };
-        
-        console.log(filteredShows, "Отфильтрованные шоу")
+
+        console.log(filteredShows, "Отфильтрованные шоу");
         dispatch(setSearchedShows(filteredShows))
       } else {
         dispatch(setSearchedShows(shows))
