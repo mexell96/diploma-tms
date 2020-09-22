@@ -19,6 +19,7 @@ library.add(fab, far, faCheckSquare, faCoffee, faUser, faEnvelope, faGlobe)
 const useStyles = makeStyles({
   root: {
     backgroundImage: `url(${background})`,
+    height: "100vh",
   },
 });
 

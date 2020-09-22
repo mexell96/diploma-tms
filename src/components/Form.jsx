@@ -19,6 +19,14 @@ const Form = props => {
 
     return (
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column" }}>
+        <h2>Contact</h2>
+        <FontAwesomeIcon icon={["far", "user"]} />
+        
+        <p>Company name. INC 550 Avenue Street, New york</p>
+        <p>+1 590 912 831</p>
+        <p>contact@companyname.com</p>
+
+                                    
             <Input
                 type="name"
                 onChange={handleChange}
@@ -59,7 +67,7 @@ const Form = props => {
 
             />
             <TextareaAutosize onBlur={handleBlur} name="message" onChange={handleChange} value={values.message} aria-label="minimum height" rowsMin={3} placeholder="Minimum 3 rows" />
-            <Button onClick={handleSubmit} disabled={isErrors && touched.email}> Send message </Button>
+            <Button style={{ border: "none", background: "#ffaa3c", padding: "10px", borderRadius: "3px", color: "#92601e", boxShadow: "0 1px 1px rgba(0, 0, 0, 0.3)", transition: "0.3s ease", width: "200px", height: "40px"}} onClick={handleSubmit} disabled={isErrors && touched.email}> Send message </Button>
         </form>
     );
 };
