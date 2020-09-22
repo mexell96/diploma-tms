@@ -80,6 +80,7 @@ function MovieReviews() {
     if (shows) {
       var newShows = searchedShows === null ? shows : searchedShows;
       setCount(Math.ceil(newShows.length / showsPerPage));
+      setFrom(0);
     }
   }, [dispatch, searchedShows]); // количество страниц
 
@@ -166,6 +167,7 @@ function MovieReviews() {
 
       <ShowsGallery shows={searchedShows} isReviewsPage showsPerPage={showsPerPage} from={from} cardSize={"lg"} />
       <Pagination
+        color="secondary"
         className={classes.pagin}
         count={count}
         variant="outlined"
