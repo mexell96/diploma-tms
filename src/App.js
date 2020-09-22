@@ -9,11 +9,12 @@ import { Home, About, JoinUs, Contacts, MovieReviews, Show } from "./Pages";
 import Header from "./components/Header";
 import Footer from "./components/Footer/Footer";
 
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faCheckSquare, faCoffee, faEnvelope, faGlobe } from '@fortawesome/free-solid-svg-icons'
+import { far, faUser } from '@fortawesome/free-regular-svg-icons'
 
-library.add(fab, faCheckSquare, faCoffee);
+library.add(fab, far, faCheckSquare, faCoffee, faUser, faEnvelope, faGlobe)
 
 const useStyles = makeStyles({
   root: {
