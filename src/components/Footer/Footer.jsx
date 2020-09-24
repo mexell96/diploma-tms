@@ -100,14 +100,16 @@ const footerData = [
 ];
 
 const useStyles = makeStyles({
+    footerMain: {
+        backgroundImage: `url(${background})`,
+    },
     footer: {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        backgroundImage: `url(${background})`,
+        
         width: 1170,
         margin: "0 auto",
-        padding: "0px 366.5px 0px 366.5px",
         color: "#84878d",
         fontFamily: "Roboto, Open Sans, sans-serif",
         fontSize: "15px",
@@ -128,11 +130,13 @@ function Footer() {
     const classes = useStyles();
 
     return (
-        <div className={classes.footer}>
-            <Grid container className={classes.footerTitle}>
-                {footerData.map(elem => <Grid item md={2} sm={12}><FooterPage  title={elem.title} info={elem.info} /></Grid>)}
-            </Grid>
-            <p>Copyright 2014 Company name, Designed by Themezy. All rights reserved</p>
+        <div className={classes.footerMain}>
+            <div className={classes.footer}>
+                <Grid container className={classes.footerTitle}>
+                    {footerData.map(elem => <Grid item md={2} sm={12} key={elem.title}><FooterPage  title={elem.title} info={elem.info} /></Grid>)}
+                </Grid>
+                <p>Copyright 2014 Company name, Designed by Themezy. All rights reserved</p>
+            </div>
         </div>
     )
 }

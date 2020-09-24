@@ -40,6 +40,7 @@ function MovieReviews() {
   const [selectedYear, setSelectedYear] = useState(ALL_YEARS);
   const [selectedGenre, setSelectedGenre] = useState(ALL_GENRES);
   const [genres, setGenres] = useState([]);
+  const [page, setPage] = useState(1);
   const { shows, searchedShows } = useSelector((state) => state.show);
 
   const showsPerPage = 8;
@@ -80,6 +81,9 @@ function MovieReviews() {
     if (shows) {
       var newShows = searchedShows === null ? shows : searchedShows;
       setCount(Math.ceil(newShows.length / showsPerPage));
+      if (count) {
+        setPage(1)
+      }
       setFrom(0);
     }
   }, [dispatch, searchedShows]); // количество страниц
@@ -133,6 +137,7 @@ function MovieReviews() {
 
   const handleChange = (event, page) => {
     setFrom((page - 1) * showsPerPage);
+    setPage(page);
   };
 
   const handleSelectChange = (event) => {
@@ -167,6 +172,7 @@ function MovieReviews() {
 
       <ShowsGallery shows={searchedShows} isReviewsPage showsPerPage={showsPerPage} from={from} cardSize={"lg"} />
       <Pagination
+        page={page}
         color="secondary"
         className={classes.pagin}
         count={count}
