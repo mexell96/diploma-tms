@@ -40,7 +40,7 @@ function MovieReviews() {
   const [selectedYear, setSelectedYear] = useState(ALL_YEARS);
   const [selectedGenre, setSelectedGenre] = useState(ALL_GENRES);
   const [genres, setGenres] = useState([]);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const { shows, searchedShows } = useSelector((state) => state.show);
 
   const showsPerPage = 8;
@@ -81,9 +81,7 @@ function MovieReviews() {
     if (shows) {
       var newShows = searchedShows === null ? shows : searchedShows;
       setCount(Math.ceil(newShows.length / showsPerPage));
-      if (count) {
-        setPage(1)
-      }
+      setPage(1)
       setFrom(0);
     }
   }, [dispatch, searchedShows]); // количество страниц
