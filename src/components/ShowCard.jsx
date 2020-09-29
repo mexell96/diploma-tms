@@ -40,12 +40,25 @@ function ShowCard(props) {
   const { size = "sm", src, alt, id, title, description, isReviewsPage, } = props;
   const classes = useStyles({ size, isReviewsPage });
 
+  const addItem = () => {
+    localStorage.setItem(id, title);
+    console.log({localStorage})
+  };
+  const delItem = () => {
+    localStorage.removeItem(id);
+    console.log({localStorage})
+  }
+  
   return (
     <div className={classes.showCard}>
       <Link to={`/show/${id}`}>
         <img src={src} alt={alt ? alt : "no-alt"} className={classes.image} style={{width: "255px", margin: "0 auto",}}/>
       </Link>
       <h3>{title}</h3>
+      
+      <button onClick={addItem}>Add in favourite</button>
+      <button onClick={delItem}>Delete in favourite</button>
+      
       <p>{description}</p>
     </div>
   );
