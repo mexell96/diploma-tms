@@ -37,23 +37,22 @@ const useStyles = makeStyles({
     padding: "10px 15px",
     display: "inline-block",
     fontSize: "0.9333333333em",
-    fontWeight: 400,
+    fontWeight: 500,
     lineHeight: 1,
     border: "1px solid black",
     borderRadius: "5px",
     textDecoration: "none",
-    background: "#ffaa3c",
+    background: "white",
     color: "black",
 
     "&:hover": {
       padding: "10px 15px 7px 15px",
-      borderBottom: "3px solid white",
-      background: "#ffa023",
+      borderBottom: "3px solid #ffaa3c",
+      background: "white",
     }
   },
   navName: {
-    margin: "0px 20px",
-    color: "#FFA93C",
+    margin: "0px 10px 0px 10px",
   }
 });
 
@@ -64,11 +63,17 @@ function Header(props) {
   return (
     <Grid container justify="space-between" className={classes.navContainer}>
       <Grid item xs={2} className={classes.navLogo}>
-        <img src={require("../images/pic/logo.png")} alt="logo" />
-        <div className={classes.navName}>
-          <div>Company Name</div>
-          <div>Tagline goes here</div>
-        </div>
+      <a href="/" style={{textDecoration: "none"}}>
+        <div style={{display: "flex"}}>
+            <div className={classes.navName}>
+              <img src={require("../images/pic/logo.png")} alt="logo" />
+            </div>
+            <div className={classes.navName}>
+              <div>Company Name</div>
+              <div>Tagline goes here</div>
+            </div>
+          </div>
+        </a>
       </Grid>
       <Grid item xs={6} className={classes.resetPadding}>
         <AppBar position="static" className={classes.nav}>

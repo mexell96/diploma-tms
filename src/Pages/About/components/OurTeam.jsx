@@ -113,19 +113,16 @@ export class OurTeam extends Component {
                         <h2 style={{ fontSize: "2em", fontWeight: 300, margin: "0 0 20px", color: "#84878d", fontFamily: "Roboto, Open Sans, sans-serif", lineHeight: "normal",}}>
                         Useful Links
                         </h2>
-
-                      <a style={aStyle} href={url}>Eiusmod tempor incididunt</a>
-                      <a style={aStyle} href={url}>Tenim ad minim venia</a>
-                      <a style={aStyle} href={url}>Quis nostrud exercitation</a>
-                      <a style={aStyle} href={url}>Ullamco laboris reprehenderit</a>
-                      <a style={aStyle} href={url}>Duis aute dolor voluptat</a>
-                      <a style={aStyle} href={url}>Velit esse cillum dolore</a>
-                      <a style={aStyle} href={url}>Excepteur sint occaeca</a>
-                      
+                        
+                      <li><a style={aStyle} href={url}>Eiusmod tempor incididunt</a></li>
+                      <li><a style={aStyle} href={url}>Tenim ad minim venia</a></li>
+                      <li><a style={aStyle} href={url}>Quis nostrud exercitation</a></li>
+                      <li><a style={aStyle} href={url}>Ullamco laboris reprehenderit</a></li>
+                      <li><a style={aStyle} href={url}>Duis aute dolor voluptat</a></li>
+                      <li><a style={aStyle} href={url}>Velit esse cillum dolore</a></li>
+                      <li><a style={aStyle} href={url}>Excepteur sint occaeca</a></li>
                     </div>
                 </div>
-
-
 
                 <div style={{ display: "flex", width: 1110, margin: "0 auto", background: "white", padding: 30,}}>
                 {data.map((elem) => (

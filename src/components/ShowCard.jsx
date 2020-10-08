@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
       width: 400,
       height: 800,
       marginBottom: 20,
-      background: "#bec1c8",
+      background: "#ffffffd9",
       display: "flex",
       flexDirection:"column",
       alignItems: "center",  
@@ -34,6 +34,13 @@ const useStyles = makeStyles((theme) => ({
       transform: isReviewsPage ? "scale(1.2)" : "none",
     },
   }),
+  buttonShow: {
+    display: "flex", 
+    flexDirection: "column",
+    justifyContent: "center",
+    width: "255px",
+    margin: "0 auto",
+  },
 }));
 
 function ShowCard(props) {
@@ -54,11 +61,11 @@ function ShowCard(props) {
       <Link to={`/show/${id}`}>
         <img src={src} alt={alt ? alt : "no-alt"} className={classes.image} style={{width: "255px", margin: "0 auto",}}/>
       </Link>
-      <h3>{title}</h3>
-      
-      <button onClick={addItem}>Add in favourite</button>
-      <button onClick={delItem}>Delete in favourite</button>
-      
+      <h3 style={{textAlign: "center", color: "#ffaa3c"}}>{title}</h3>
+      <div className={classes.buttonShow}>
+        <button onClick={addItem}>Add in favourite</button>
+        <button onClick={delItem}>Delete in favourite</button>
+      </div>
       <p>{description}</p>
     </div>
   );

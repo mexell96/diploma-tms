@@ -14,11 +14,13 @@ function Show(props) {
   return (
     <div>
 
-     {props.show && <ShowCard src={props.show.image ? props.show.image.medium : "" } 
+    {props.show && 
+      <ShowCard src={props.show.image ? props.show.image.medium : "" } 
       id={props.show.id} 
       title={props.show.name}
       description={props.show.summary}
-      />}
+      >
+      </ShowCard>}
     </div>
   )
 }

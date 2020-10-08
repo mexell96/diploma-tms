@@ -11,10 +11,10 @@ import Footer from "./components/Footer/Footer";
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faCheckSquare, faCoffee, faEnvelope, faGlobe } from '@fortawesome/free-solid-svg-icons'
+import { faCheckSquare, faCoffee, faEnvelope, faGlobe, faMapMarkerAlt, faMobileAlt, } from '@fortawesome/free-solid-svg-icons'
 import { far, faUser } from '@fortawesome/free-regular-svg-icons'
 
-library.add(fab, far, faCheckSquare, faCoffee, faUser, faEnvelope, faGlobe)
+library.add(fab, far, faCheckSquare, faCoffee, faUser, faEnvelope, faGlobe, faMapMarkerAlt, faMobileAlt, )
 
 const useStyles = makeStyles({
   root: {

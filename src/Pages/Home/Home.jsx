@@ -16,6 +16,10 @@ const useStyles = makeStyles({
     margin: "0 auto",
     padding: "0px 366.5px 0px 366.5px",
   },
+  rootSmall: {
+    background: "white",
+    padding: "10px",
+  }
 });
 
 function Home(props) {
@@ -29,9 +33,11 @@ function Home(props) {
 
   return (
     <div className={classes.root}>
-      <ShowsGallery cardSize={"sm"} shows={shows} />
-      
-      <Premieres />
+      <div className={classes.rootSmall}>
+        <ShowsGallery cardSize={"sm"} shows={shows} />
+        
+        <Premieres />
+      </div>
     </div>
   );
 }

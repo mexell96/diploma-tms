@@ -2,7 +2,7 @@ import React from "react";
 import ShowCard from "./ShowCard";
 import { Grid } from "@material-ui/core";
 
-function ShowsGallery({ shows, showsPerPage = 7, isReviewsPage = false, from = 0, cardSize }) {
+function ShowsGallery({ shows, showsPerPage = 12, isReviewsPage = false, from = 0, cardSize }) {
   return (
     <Grid container>
       {shows
@@ -13,7 +13,7 @@ function ShowsGallery({ shows, showsPerPage = 7, isReviewsPage = false, from = 0
               <ShowCard
                 src={show.image ? show.image.medium : ""}
                 id={show.id}
-                title={isReviewsPage ? show.name : undefined}
+                title={show.name ? show.name : undefined}
                 description={isReviewsPage && show.summary}
                 isReviewsPage={isReviewsPage}
                 size={cardSize}

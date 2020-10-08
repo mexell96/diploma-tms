@@ -22,13 +22,12 @@ class Contacts extends Component {
   render() {
     return (
       <div style={{backgroundImage: `url(${background})`}}>
-        <div style={{ display: "flex", width: 1110, background: "grey",  margin: "0 auto"}}>
+        <div style={{ display: "flex", width: 1110, background: "white",  margin: "0 auto"}}>
           <div style={{width: "350px", height: 490, background: "white", margin: "20px"}}>
             <Form email="" />
           </div>
           <div>
             <Map containerStyle={containerStyleMap} google={this.props.google} zoom={14} initialCenter={{lat: 53.905180, lng: 27.553379}}>
-
               <Marker
                 title={'The marker`s title will appear as a tooltip.'}
                 name={'SOMA'}
