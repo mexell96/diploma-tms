@@ -2,16 +2,13 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-
+import { useAuth0 } from '@auth0/auth0-react';
 import background from "./images/background.jpg";
 
 import { Home, About, JoinUs, Contacts, MovieReviews, Show, Favourite } from "./Pages";
 import Header from "./components/Header";
 import Footer from "./components/Footer/Footer";
 
-
-
-import { useAuth0 } from '@auth0/auth0-react';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
@@ -38,11 +35,18 @@ const routes = [
 
 function App() {
   const classes = useStyles();
-  const { isLoading } = useAuth0();
+  const { 
+    isLoading,
+    error,
+  } = useAuth0();
 
-  if (isLoading) return <div>Loading...</div>
-
-  return (
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+  if (error) {
+    return <div>Oops... {error.message}</div>;
+  }
+    return (
       <div className={classes.root}>
         <Header routes={routes}></Header>
         <Paper>
@@ -62,7 +66,7 @@ function App() {
         </Paper>
         <Footer></Footer>
       </div>
-  );
+    )
 }
 
 export default App;

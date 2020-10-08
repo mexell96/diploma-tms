@@ -5,6 +5,7 @@ import ShowsGallery from "../../components/ShowsGallery";
 import { Pagination } from "@material-ui/lab";
 import { makeStyles } from "@material-ui/core/styles";
 import background from "../../images/background.jpg";
+import { withAuthenticationRequired } from '@auth0/auth0-react';
 
 
 const useStyles = makeStyles({
@@ -92,4 +93,7 @@ function Favourite() {
   );
 }
 
-export default Favourite;
+export default withAuthenticationRequired(Favourite, {
+  // Show a message while the user waits to be redirected to the login page.
+  onRedirecting: () => <div>Redirecting you to the login page...</div>,
+});
