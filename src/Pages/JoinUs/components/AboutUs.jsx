@@ -115,7 +115,7 @@ function AboutUS({ person }) {
             consequatur recusandae quo autem consectetur tempore rem quam
             corrupti a. Accusamus.
           </p>
-          <a href="http://localhost:3000/" className={classes.blockButton}>
+          <a href="#" className={classes.blockButton}>
             Send a request
           </a>
         </div>
@@ -128,7 +128,7 @@ function AboutUS({ person }) {
             eius accusantium, temporibus quis esse tempora. Laboriosam libero
             odio nobis, eligendi minus.
           </p>
-          <a href="http://localhost:3000/" className={classes.blockButton}>
+          <a href="#" className={classes.blockButton}>
             Send a request
           </a>
         </div>
@@ -141,7 +141,7 @@ function AboutUS({ person }) {
             dolor dolore unde, esse eligendi autem nobis rem tempora recusandae
             laborum.
           </p>
-          <a href="http://localhost:3000/" className={classes.blockButton}>
+          <a href="#" className={classes.blockButton}>
             Send a request
           </a>
         </div>

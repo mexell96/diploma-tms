@@ -9,6 +9,10 @@ import { Home, About, JoinUs, Contacts, MovieReviews, Show, Favourite } from "./
 import Header from "./components/Header";
 import Footer from "./components/Footer/Footer";
 
+
+
+import { useAuth0 } from '@auth0/auth0-react';
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCheckSquare, faCoffee, faEnvelope, faGlobe, faMapMarkerAlt, faMobileAlt, } from '@fortawesome/free-solid-svg-icons'
@@ -34,27 +38,30 @@ const routes = [
 
 function App() {
   const classes = useStyles();
+  const { isLoading } = useAuth0();
+
+  if (isLoading) return <div>Loading...</div>
 
   return (
-    <div className={classes.root}>
-      <Header routes={routes}></Header>
-      <Paper>
-        <Switch>
-          {routes.map((elem) => (
-            <Route
-              path={elem.path}
-              exact
-              component={elem.component}
-              key={elem.name}
-            />
-          ))}
-          <Route path={"/show/:id"} exact component={Show}></Route>
+      <div className={classes.root}>
+        <Header routes={routes}></Header>
+        <Paper>
+          <Switch>
+            {routes.map((elem) => (
+              <Route
+                path={elem.path}
+                exact
+                component={elem.component}
+                key={elem.name}
+              />
+            ))}
+            <Route path={"/show/:id"} exact component={Show}></Route>
 
-          <Route> 404 not found </Route>
-        </Switch>
-      </Paper>
-      <Footer></Footer>
-    </div>
+            <Route> 404 not found </Route>
+          </Switch>
+        </Paper>
+        <Footer></Footer>
+      </div>
   );
 }
 

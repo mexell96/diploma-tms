@@ -4,6 +4,10 @@ import { Grid, AppBar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 
+import LoginButton from '../components/Auth/LoginButton';
+import LogoutButton from '../components/Auth/LogoutButton';
+import Profile from '../components/Auth/Profile';
+
 const useStyles = makeStyles({
   navContainer: {
     display: "flex",
@@ -75,7 +79,7 @@ function Header(props) {
           </div>
         </a>
       </Grid>
-      <Grid item xs={6} className={classes.resetPadding}>
+      <Grid item xs={6} >
         <AppBar position="static" className={classes.nav}>
           {routes.map((elem) => (
             <Link to={elem.path} key={elem.name} className={classes.navLink}>
@@ -83,6 +87,13 @@ function Header(props) {
             </Link>
           ))}
         </AppBar>
+      </Grid>
+      <Grid item xs={2}>
+        <>
+          <LoginButton />
+          <LogoutButton />
+          <Profile />
+        </>
       </Grid>
     </Grid>
   );
