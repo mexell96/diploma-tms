@@ -19,7 +19,6 @@ const useStyles = makeStyles({
     background: "inherit",
     padding: "50px 0px",
     color: "#84878d",
-    fontFamily: "Roboto, Open Sans, sansSerif",
     fontSize: "15px",
     fontWeight: 400,
     lineHeight: "normal",
@@ -40,7 +39,7 @@ const useStyles = makeStyles({
   navLink: {
     padding: "10px 15px",
     display: "inline-block",
-    fontSize: "0.9333333333em",
+    fontSize: "15px",
     fontWeight: 500,
     lineHeight: 1,
     border: "1px solid black",
