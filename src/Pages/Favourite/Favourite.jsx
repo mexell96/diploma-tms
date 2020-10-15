@@ -79,6 +79,7 @@ function Favourite() {
 
   return (
     <div className={classes.movieCenter}>
+    <div style={{background: "red", width: "100"}}>LS: {localStorage.length}</div>
       <ShowsGallery shows={searchedShows} isReviewsPage showsPerPage={showsPerPage} from={from} cardSize={"lg"} />
       <Pagination
         page={page}
