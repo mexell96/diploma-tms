@@ -14,6 +14,6 @@ export default (props) => (
       redirectUri={window.location.origin}
     >
       <App />
-    </Auth0Provider>,
+    </Auth0Provider>
   </Router>
 );
