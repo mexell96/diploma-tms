@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: "0px 0px 0px 75px",
+    padding: "84px 0px 0px 75px",
     backgroundImage: `url(${background})`,
   },
   pagin: {
@@ -77,10 +77,32 @@ function Favourite() {
 
   const classes = useStyles();
 
+  function changeLS () {
+    if(localStorage.length < searchedShows.length) {
+      for(let i=0; i < localStorage.length; i++) {
+        var key = +localStorage.key(i);
+
+        for (let b = 0; b < shows.length; b++) {
+          if(key === shows[b].id) {
+            newShows.push(shows[b])
+          }
+        }
+      }
+      dispatch(setSearchedShows(newShows));
+    }
+
+    if (localStorage.length <= 8) {
+      setCount(Math.ceil(localStorage.length / showsPerPage));
+      setPage(1)
+      setFrom(0);
+    }
+  } 
+
   return (
     <div className={classes.movieCenter}>
-    <div style={{background: "red", width: "100"}}>LS: {localStorage.length}</div>
-      <ShowsGallery shows={searchedShows} isReviewsPage showsPerPage={showsPerPage} from={from} cardSize={"lg"} />
+      <div onClick={changeLS} style={{display: "flex", width: 1828, }}>
+        <ShowsGallery shows={searchedShows} isReviewsPage showsPerPage={showsPerPage} from={from} cardSize={"lg"} />
+      </div>
       <Pagination
         page={page}
         color="secondary"
@@ -96,5 +118,5 @@ function Favourite() {
 
 export default withAuthenticationRequired(Favourite, {
   // Show a message while the user waits to be redirected to the login page.
-  onRedirecting: () => <div>Redirecting you to the login page...</div>,
+  onRedirecting: () => <div>Redirecting you to the login page...</div>
 });

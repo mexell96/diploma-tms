@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     };
     const stylesLG = {
       width: 400,
-      height: 800,
+      height: 900,
       marginBottom: 20,
       background: "#ffffffd9",
       display: "flex",
