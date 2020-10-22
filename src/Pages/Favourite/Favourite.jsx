@@ -37,19 +37,36 @@ function Favourite() {
 
   const showsPerPage = 8;
   const newShows = [];
+  const [countLS, setCountLS] = useState(localStorage.length);
 
   useEffect(() => {
     dispatch(getShows(1));
   }, [dispatch]);
-  
-  useEffect(() => {
-    if (localStorage) {
-      setCount(Math.ceil(localStorage.length / showsPerPage));
-      setPage(1)
-      setFrom(0);
-    }
-  }, [dispatch, localStorage]); // количество страниц
 
+  useEffect(() => {
+    if (countLS !== localStorage.length) {
+      setCountLS(countLS + 1);
+    };
+  }, [dispatch, countLS]);
+
+  useEffect(() => {
+    if (localStorage.length === countLS) {
+      setCount(Math.ceil(localStorage.length / showsPerPage));
+
+      if (localStorage.length <= 8  && localStorage.length > 0) {
+        setPage(1);
+        setFrom(0);
+      };
+      if (localStorage.length <= 16  && localStorage.length >= 9) {
+      setPage(2);
+      setFrom(8);
+      };
+      if (localStorage.length <= 24 && localStorage.length >= 17) {
+        setPage(3);
+        setFrom(16);
+      };
+    }
+  }, [dispatch, localStorage.length]);
 
   useEffect(() => {
     if(shows && localStorage) {  
@@ -64,10 +81,8 @@ function Favourite() {
       }
       console.log({newShows}); // избранные шоу
       dispatch(setSearchedShows(newShows));
-    } else {
-      dispatch(setSearchedShows(shows));
     }
-  }, [dispatch, localStorage, shows]);
+  }, [dispatch, shows, countLS]);
 
 
   const handleChange = (event, page) => {
@@ -77,30 +92,9 @@ function Favourite() {
 
   const classes = useStyles();
 
-  function changeLS () {
-    if(localStorage.length < searchedShows.length) {
-      for(let i=0; i < localStorage.length; i++) {
-        var key = +localStorage.key(i);
-
-        for (let b = 0; b < shows.length; b++) {
-          if(key === shows[b].id) {
-            newShows.push(shows[b])
-          }
-        }
-      }
-      dispatch(setSearchedShows(newShows));
-    }
-
-    if (localStorage.length <= 8) {
-      setCount(Math.ceil(localStorage.length / showsPerPage));
-      setPage(1)
-      setFrom(0);
-    }
-  } 
-
   return (
     <div className={classes.movieCenter}>
-      <div onClick={changeLS} style={{display: "flex", width: 1828, }}>
+      <div onClick={() => setCountLS(countLS - 1)} style={{display: "flex", width: 1828, }}>
         <ShowsGallery shows={searchedShows} isReviewsPage showsPerPage={showsPerPage} from={from} cardSize={"lg"} />
       </div>
       <Pagination
